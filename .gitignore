@@ -1,0 +1,17 @@
+/data/MSCOCO
+/data/MuCo-3DHP
+/data/MuPoTS-3D/images
+/data/MuPoTS-3D/MuPoTS-3D.json
+/data/MuPoTS-3D/group*.pkl
+/data/panoptic-toolbox/data
+/data/panoptic-toolbox/data_hmor
+/data/panoptic-toolbox/clean_train.pkl
+/data/panoptic-toolbox/clean_valid.pkl
+/models
+/output
+/log
+/vis
+*.pyc
+/.vscode
+/results
+/mupots_results
