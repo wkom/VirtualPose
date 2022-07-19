@@ -1,0 +1,13 @@
+torch==1.7.1
+tqdm
+json_tricks
+opencv_python
+prettytable
+scipy
+torchvision
+numpy
+matplotlib
+easydict
+PyYAML
+tensorboardX
+pycocotools

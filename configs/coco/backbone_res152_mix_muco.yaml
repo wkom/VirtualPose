@@ -1,0 +1,77 @@
+EXPERIMENT_NAME: 'coco_backbone_res152_coco_muco'
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+BACKBONE_MODEL: 'posedet_resnet'
+MODEL: 'multi_person_posenet'
+DATA_DIR: ''
+OUTPUT_DIR: 'output'
+LOG_DIR: 'log'
+WORKERS: 12
+PRINT_FREQ: 1000
+PRINT_LOG: False
+
+DATASET:
+  COLOR_RGB: True
+  TRAIN_DATASET: ['coco', 'muco']
+  TEST_DATASET: 'mupots'
+  DATA_FORMAT: jpg
+  DATA_AUGMENTATION: False
+  TRAIN_ROOT: ['data/MSCOCO/', 'data/MuCo-3DHP/']
+  TEST_ROOT: 'data/MuPoTS-3D/'
+  TEST_SUBSET: 'validation'
+  TRAIN_SUBSET: 'train'
+  ROOTIDX: 2
+NETWORK:
+  PRETRAINED_BACKBONE: "models/pose_resnet_152_384x288.pth.tar"
+  PRETRAINED:  '' 
+  TARGET_TYPE: gaussian
+  IMAGE_SIZE:
+  - 960
+  - 512
+  HEATMAP_SIZE:
+  - 240
+  - 128
+  NUM_JOINTS: 17
+ROOT_ESTIMATION:
+  MAX_PEOPLE_NUM: 20
+  
+POSE_RESNET:
+  FINAL_CONV_KERNEL: 1
+  DECONV_WITH_BIAS: False
+  NUM_DECONV_LAYERS: 3
+  NUM_DECONV_FILTERS:
+  - 256
+  - 256
+  - 256
+  NUM_DECONV_KERNELS:
+  - 4
+  - 4
+  - 4
+  NUM_LAYERS: 152
+LOSS:
+  USE_TARGET_WEIGHT: True
+  REG_LOSS: 'l1'
+  BBOX_WEIGHT: 0.1
+  DEPTH_WEIGHT: 0
+
+TRAIN:
+  BATCH_SIZE: 12
+  SHUFFLE: True
+  BEGIN_EPOCH: 0
+  END_EPOCH: 40
+  SAVE_EPOCH: 2
+  MAX_SAMPLE: 24000
+  RESUME: True
+  OPTIMIZER: adam
+  LR: 0.0001
+  SCHEME: ['backbone']
+TEST:
+  NEED: False
+  MODEL_FILE: 'model_last.pth.tar'
+  BATCH_SIZE: 16
+DEBUG:
+  DEBUG: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True

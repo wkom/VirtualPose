@@ -1,9 +1,11 @@
 # Virtual Pose: Learning Generalizable 3D Human Pose Models from Virtual Data (ECCV 2022)
+![quality result](./asset/quality.png)
+
 
 ## Introduction
 This is the official [Pytorch](https://pytorch.org/) implementation for:
 **Virtual Pose: Learning Generalizable 3D Human Pose Models from Virtual Data**
-
+![overall pipeline](./asset/pipeline.png)
 
 ## Installation
 ```
@@ -90,17 +92,18 @@ python run/train_3d.py --cfg configs/muco/synthesize_full.yaml --gpus 4
 
 Inference with 4 gpus:
 ```
-python run/valid_3d.py --cfg configs/panoptic/synthesize_full_inference.yaml --gpus 4
+python run/validate_3d.py --cfg configs/panoptic/synthesize_full_inference.yaml --gpus 4
 ```
 
 ### MuCo-3DHP and MuPoTS-3D datasets
 
 Inference with 4 gpus:
 ```
-python run/valid_3d.py --cfg configs/muco/synthesize_full_inference.yaml --gpus 4
+python run/validate_3d.py --cfg configs/muco/synthesize_full_inference.yaml --gpus 4
 ```
 
 The results are in `${ROOT}/mupots_results/$`, then use the evaluation code provided by MuPoTS-3D dataset to evaluate the results.
 
-
+# Acknowledgement
+This repo is built on https://github.com/microsoft/voxelpose-pytorch. 
 

@@ -11,7 +11,8 @@
 /output
 /log
 /vis
-*.pyc
 /.vscode
 /results
 /mupots_results
+__pycache__
+*.pyc

@@ -1,0 +1,102 @@
+EXPERIMENT_NAME: 'muco_synthesize_full_release'
+CUDNN:
+  BENCHMARK: True
+  DETERMINISTIC: False
+  ENABLED: True
+BACKBONE_MODEL: 'posedet_resnet'
+MODEL: 'multi_person_posenet'
+DATA_DIR: ''
+OUTPUT_DIR: 'output'
+LOG_DIR: 'log'
+WORKERS: 12
+PRINT_FREQ: 1000
+PRINT_LOG: False
+
+DATASET:
+  COLOR_RGB: True
+  TRAIN_DATASET: 'muco_synthetic'
+  TEST_DATASET: 'mupots'
+  DATA_FORMAT: jpg
+  DATA_AUGMENTATION: False
+  HEATMAP:
+    SYNTHESIZE: False
+    NOISE: True
+    FIX_CAMERA: True
+  TRAIN_ROOT: 'data/MuCo-3DHP/' 
+  TEST_ROOT: 'data/MuPoTS-3D/'
+  TEST_SUBSET: 'validation'
+  TRAIN_SUBSET: 'train'
+  ROOTIDX: 2
+  GROUND_CENTER: True
+  RANDOM_PLACE: True
+NETWORK:
+  PRETRAINED:  'output/muco_synthetic/multi_person_posenet_152/muco_synthesize_full_release/synthesize_full/model_last.pth.tar' 
+  PRETRAINED_BACKBONE:  'output/mix_coco_muco/multi_person_posenet_152/coco_backbone_res152_coco_muco/backbone_res152_mix_muco/model_last.pth.tar' 
+  TARGET_TYPE: gaussian
+  IMAGE_SIZE:
+  - 960
+  - 512
+  HEATMAP_SIZE:
+  - 240
+  - 128
+  NUM_JOINTS: 17
+ROOT_ESTIMATION: 
+  SPACE_SIZE:
+    - 8000.0
+    - 8000.0
+    - 2400.0
+  SPACE_CENTER:
+    - 0.0 
+    - 0.0 
+    - 1100.0
+  INITIAL_CUBE_SIZE:
+    - 80
+    - 80
+    - 24
+  MAX_PEOPLE_NUM: 10
+  THRESHOLD: 0.3
+  MATCHED_THRESHOLD: 1000
+POSE_RESNET:
+  INPUT_CHANNELS: 3
+  FINAL_CONV_KERNEL: 1
+  DECONV_WITH_BIAS: False
+  NUM_DECONV_LAYERS: 3
+  NUM_DECONV_FILTERS:
+  - 256
+  - 256
+  - 256
+  NUM_DECONV_KERNELS:
+  - 4
+  - 4
+  - 4
+  NUM_LAYERS: 152
+
+DEPTH_RESNET:
+  INPUT_CHANNELS: 9
+  NUM_LAYERS: 18
+
+LOSS:
+  USE_TARGET_WEIGHT: True
+  REG_LOSS: 'l1'
+  BBOX_WEIGHT: 0
+  DEPTH_WEIGHT: 0.1
+  HEATMAP_WEIGHT: 0
+
+TRAIN:
+  BATCH_SIZE: 6
+  SHUFFLE: True
+  BEGIN_EPOCH: 0
+  END_EPOCH: 20
+  SAVE_EPOCH: 1
+  RESUME: True
+  OPTIMIZER: adam
+  LR: 0.0001
+  SCHEME: ['backbone', 'REN', 'PEN']
+TEST:
+  NEED: False
+  MODEL_FILE: 'model_last.pth.tar'
+  BATCH_SIZE: 16
+DEBUG:
+  DEBUG: True
+  SAVE_HEATMAPS_GT: True
+  SAVE_HEATMAPS_PRED: True
