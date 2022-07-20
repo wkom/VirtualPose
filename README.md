@@ -1,10 +1,10 @@
-# Virtual Pose: Learning Generalizable 3D Human Pose Models from Virtual Data (ECCV 2022)
+# VirtualPose: Learning Generalizable 3D Human Pose Models from Virtual Data (ECCV 2022)
 ![quality result](./asset/quality.png)
 
 
 ## Introduction
 This is the official [Pytorch](https://pytorch.org/) implementation for:
-**Virtual Pose: Learning Generalizable 3D Human Pose Models from Virtual Data**
+**VirtualPose: Learning Generalizable 3D Human Pose Models from Virtual Data**
 ![overall pipeline](./asset/pipeline.png)
 
 ## Installation
