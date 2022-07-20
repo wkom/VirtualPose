@@ -37,7 +37,8 @@ ${ROOT}
     |   |-- MuPoTS-3D.json
     |-- panoptic-toolbox
     |   |-- data
-    |   |-- data_hmor
+    |   |-- data_
+    
     |   |   |-- 160224_haggling1
     |   |   |-- 160224_mafia1
     |   |   |-- ...
@@ -54,7 +55,7 @@ ${ROOT}
 * Download MuCo parsed and composited data [[data](https://drive.google.com/drive/folders/1yL2ey3aWHJnh8f_nhWP--IyC9krAPsQN?usp=sharing)] provided by [[RootNet](https://github.com/mks0601/3DMPPE_ROOTNET_RELEASE)]
 * Download MuPoTS parsed data [[images](http://gvv.mpi-inf.mpg.de/projects/SingleShotMultiPerson/)][[annotations](https://drive.google.com/drive/folders/1WmfQ8UEj6nuamMfAdkxmrNcsQTrTfKK_?usp=sharing)]
 
-* Download Panoptic by following the instructions in [panoptic-toolbox](https://github.com/CMU-Perceptual-Computing-Lab/panoptic-toolbox) and extract them under `${ROOT}/data/panoptic-toolbox/data`. Download[[annotations](https://drive.google.com/drive/folders/1TMQmbNWmqNDN-skCqF7B8LpLIkr_bqc1)] provided by [[HMOR](https://arxiv.org/abs/2008.00206) and put them under  `${ROOT}/data/panoptic-toolbox/$`, and run `python pack.py`.
+* Download Panoptic by following the instructions in [panoptic-toolbox](https://github.com/CMU-Perceptual-Computing-Lab/panoptic-toolbox) and extract them under `${ROOT}/data/panoptic-toolbox/data`. Download[[annotations](https://drive.google.com/drive/folders/1TMQmbNWmqNDN-skCqF7B8LpLIkr_bqc1)] provided by [[HMOR](https://arxiv.org/abs/2008.00206)] and put them under  `${ROOT}/data/panoptic-toolbox/$`, and run `python pack.py`.
 
 * Download pretrained ResNet-152 model [pose_resnet_152_384x288.pth.tar](https://drive.google.com/drive/folders/1fGLeCgTbaO50wylfV_j1OFTEx8DDpaqh) provided by [[Simple Baselines](https://github.com/microsoft/human-pose-estimation.pytorch)] and put it under `${ROOT}/models/$`.
 
