@@ -37,7 +37,8 @@ ${ROOT}
     |   |-- MuPoTS-3D.json
     |-- panoptic-toolbox
     |   |-- data
-    |   |-- data_hmor
+    |   |-- data_
+    
     |   |   |-- 160224_haggling1
     |   |   |-- 160224_mafia1
     |   |   |-- ...
