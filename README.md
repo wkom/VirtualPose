@@ -104,6 +104,17 @@ python run/validate_3d.py --cfg configs/muco/synthesize_full_inference.yaml --gp
 
 The results are in `${ROOT}/mupots_results/$`, then use the evaluation code provided by MuPoTS-3D dataset to evaluate the results.
 
+## Citing
+If our code helps your research, please consider citing the following paper:
+
+    @inproceedings{su2022virtualpose,
+        title={VirtualPose: Learning Generalizable 3D Human Pose Models from Virtual Data},
+        author={Su, Jiajun and Wang, Chunyu and Ma, Xiaoxuan and Zeng, Wenjun and Wang, Yizhou},
+        booktitle={European Conference on Computer Vision},
+        pages={55--71},
+        year={2022},
+        organization={Springer}
+    }
+
 # Acknowledgement
 This repo is built on https://github.com/microsoft/voxelpose-pytorch. 
-
