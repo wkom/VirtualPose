@@ -1,11 +1,11 @@
 import torch
 import torch.nn as nn
 
-from models.v2v_net import V2VNet
-from models.project_layer import ProjectLayer
-from models.posedet_resnet import get_pose_net as get_pose_net_single
-from core.filter import nms
-from utils.decode import det_decode
+from .v2v_net import V2VNet
+from .project_layer import ProjectLayer
+from .posedet_resnet import get_pose_net as get_pose_net_single
+from virtualpose.core.filter import nms
+from virtualpose.utils.decode import det_decode
 
 
 class FilterLayer(nn.Module):
@@ -103,5 +103,5 @@ class RootEstimationNet(nn.Module):
         root_cubes = self.v2v_net(initial_cubes)[:, 0]
         grid_centers = self.filter_layer(root_cubes, meta)
 
-        output_decoded = {'bboxes': bboxes, 'depths': depths * meta['depth_norm_factor'][:, None, None]}
+        output_decoded = {'bboxes': bboxes, 'depths': depths * meta['depth_norm_factor'][:, None, None], 'roots_2d': xys}
         return depth_map, root_cubes, grid_centers, output_decoded

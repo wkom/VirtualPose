@@ -13,7 +13,7 @@ import torch.nn as nn
 import torch.optim as optim
 import shutil
 
-from core.config import get_model_name
+from virtualpose.core.config import get_model_name
 
 
 def create_logger(cfg, cfg_path, phase='train', cur_path='./'):

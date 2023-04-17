@@ -11,9 +11,10 @@ import logging
 import os
 import copy
 
-from dataset.JointsDataset import JointsDataset
-from utils.transforms import projectPoints
-from utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
+from .JointsDataset import JointsDataset
+from .SynJointsDataset import SynJointsDataset
+from virtualpose.utils.transforms import projectPoints
+from virtualpose.utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +38,7 @@ JOINTS_DEF_PANOPTIC = {
 
 JOINTS_DEF_MUPOTS = {
     'neck': 0,
-    'headtop': 1,  
+    'headtop': 1, 
     'mid-hip': 2,
     'l-shoulder': 3,
     'l-elbow': 4,
@@ -77,7 +78,7 @@ JOINTS_NAME = ('headtop', 'neck',
                    'mid-hip', 'spine', 'head',
                    'R_Hand', 'L_Hand', 'R_Toe', 'L_Toe')
 
-class MuCo(JointsDataset):
+class MuCoSynthetic(SynJointsDataset):
     def __init__(self, cfg, image_set, is_train, dataset_root, transform=None, data_path=''):
         super().__init__(cfg, image_set, is_train, dataset_root, transform, data_path)
         self.pixel_std = 200.0
@@ -86,10 +87,11 @@ class MuCo(JointsDataset):
         self.match_idx = {v: JOINTS_NAME.index(k) for k, v in self.joints_name.items()}
         self.match_idx = [self.match_idx[i] for i in range(len(self.joints_name))]
         self.limbs = LIMBS
-        
         self.root_id = cfg.DATASET.ROOTIDX
+        self.ground_center = cfg.DATASET.GROUND_CENTER
 
-        self.db_file = 'group_train_joint{}.pkl'.format(self.num_joints)
+        self.db_file = 'group_{}_joint{}{}.pkl'.format(self.image_set, self.num_joints, \
+            'ground' if self.ground_center else '')
         self.db_file = osp.join(self.dataset_root, self.db_file)
         if osp.exists(self.db_file): # lazy loading
             self.db = pickle.load(open(self.db_file, 'rb'))
@@ -99,6 +101,7 @@ class MuCo(JointsDataset):
             pickle.dump(self.db, open(self.db_file, 'wb'))
 
         self.db_size = len(self.db)
+        self.pose_list = np.concatenate([term['joints_3d'] for term in self.db], axis = 0)
 
     def _get_db(self, annot):
         width = 1920
@@ -141,10 +144,7 @@ class MuCo(JointsDataset):
                 our_cam['p'] = np.zeros((2, 1))
                 poses_3d_cam = np.array(img_annot['joints_3d'])[:, self.match_idx]
                 poses_3d = camera_to_world_frame(poses_3d_cam.reshape(-1, 3), our_cam['R'], our_cam['T']).reshape(*(poses_3d_cam.shape))
-                new_center = poses_3d[:, self.root_id].mean(axis = 0) + np.random.uniform(-1, 1, size = 3) * np.array([200, 200, 30]) + np.array([0, 0, 300])
-                our_cam['T'] -= new_center[:, None]
-                poses_3d -= new_center[None, None]
-
+                
                 db.append({
                     'image': osp.join(self.dataset_root, 'images', img_annot['file_name']),
                     'joints_3d': poses_3d,
@@ -157,7 +157,6 @@ class MuCo(JointsDataset):
 
         db.sort(key = lambda x: x['image'])
         return db
-
 
     def __len__(self):
         return self.db_size

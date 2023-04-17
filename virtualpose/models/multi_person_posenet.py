@@ -7,11 +7,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-from models import pose_resnet, posedet_resnet
-from models.root_estimation_net import RootEstimationNet
-from models.pose_estimation_net import PoseEstimationNet
-from core.loss import PerJointMSELoss, PerJointL1Loss, RegL1Loss, RegLoss
-from utils.decode import det_decode
+from . import pose_resnet, posedet_resnet
+from .root_estimation_net import RootEstimationNet
+from .pose_estimation_net import PoseEstimationNet
+from virtualpose.core.loss import PerJointMSELoss, PerJointL1Loss, RegL1Loss, RegLoss
+from virtualpose.utils.decode import det_decode
 
 
 class MultiPersonPoseNet(nn.Module):

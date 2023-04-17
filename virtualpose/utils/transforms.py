@@ -112,6 +112,14 @@ def affine_transform_pts_cuda(pts, t):
     out = torch.mm(t, torch.t(pts_homo))
     return torch.t(out[:2, :])
 
+def inverse_affine_transform_pts_cuda(pts, t):
+    npts = pts.shape[0]
+    pts_homo = torch.cat([pts, torch.ones(npts, 1, device=pts.device)], dim=1)
+    t_homo = torch.cat([t, torch.tensor([0, 0, 1], device=pts.device)[None]], dim=0)
+    t_inverse = torch.inverse(t_homo)
+    out = torch.mm(t_inverse, torch.t(pts_homo))
+    return torch.t(out[:2, :])
+
 
 def get_3rd_point(a, b):
     direct = a - b

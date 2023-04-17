@@ -21,15 +21,14 @@ from tqdm import tqdm
 from copy import copy
 import numpy as np
 
-import _init_paths
-from core.config import config
-from core.config import update_config
-from core.function import train_3d, validate_3d
-from utils.utils import create_logger
-from utils.utils import save_checkpoint, load_checkpoint, load_model_state
-from utils.utils import load_backbone
-import dataset
-import models
+from virtualpose.core.config import config
+from virtualpose.core.config import update_config
+from virtualpose.core.function import train_3d, validate_3d
+from virtualpose.utils.utils import create_logger
+from virtualpose.utils.utils import save_checkpoint, load_checkpoint, load_model_state
+from virtualpose.utils.utils import load_backbone, load_backbone_validate
+from virtualpose.utils.transforms import inverse_affine_transform_pts_cuda
+from virtualpose import dataset, models
 
 
 def parse_args():

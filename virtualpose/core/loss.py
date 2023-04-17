@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import torch.nn as nn
 import torch.nn.functional as F
-from utils.det_utils import _tranpose_and_gather_feat
+from virtualpose.utils.det_utils import _tranpose_and_gather_feat
 
 
 class JointsMSELoss(nn.Module):

@@ -11,9 +11,9 @@ import torch
 import numpy as np
 import cv2
 
-from utils.vis import save_debug_images_multi
-from utils.vis import save_debug_3d_images
-from utils.vis import save_debug_3d_cubes, save_debug_detection
+from virtualpose.utils.vis import save_debug_images_multi
+from virtualpose.utils.vis import save_debug_3d_images
+from virtualpose.utils.vis import save_debug_3d_cubes, save_debug_detection
 from tqdm import tqdm
 from itertools import islice
 

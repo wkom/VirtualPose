@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from models.v2v_net import V2VNet
-from models.project_layer import ProjectLayer
+from .v2v_net import V2VNet
+from .project_layer import ProjectLayer
 
 
 class SoftArgmaxLayer(nn.Module):

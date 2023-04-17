@@ -8,10 +8,10 @@ from torch.utils.data import Dataset
 import os
 import time
 
-from utils.transforms import get_affine_transform
-from utils.transforms import affine_transform, get_scale
-from utils.cameras_cpu import project_pose, world_to_camera_frame, angles_to_camera
-from dataset.JointsDataset import JointsDataset
+from virtualpose.utils.transforms import get_affine_transform
+from virtualpose.utils.transforms import affine_transform, get_scale
+from virtualpose.utils.cameras_cpu import project_pose, world_to_camera_frame, angles_to_camera
+from .JointsDataset import JointsDataset
 
 logger = logging.getLogger(__name__)
 

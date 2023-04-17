@@ -13,9 +13,9 @@ import copy
 import scipy.io as sio
 from pathlib import Path
 
-from dataset.JointsDataset import JointsDataset
-from utils.transforms import projectPoints
-from utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
+from .JointsDataset import JointsDataset
+from virtualpose.utils.transforms import projectPoints
+from virtualpose.utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
 
 logger = logging.getLogger(__name__)
 

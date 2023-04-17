@@ -10,9 +10,15 @@
 /models
 /output
 /log
-/vis
-/.vscode
+/vis*
 /results
 /mupots_results
+/*.sh
+
 __pycache__
 *.pyc
+/.vscode
+/.eggs
+/dist
+/build
+/virtualpose.egg-info

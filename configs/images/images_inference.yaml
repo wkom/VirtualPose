@@ -1,4 +1,4 @@
-EXPERIMENT_NAME: 'voxelpose_hmor_synthesize_full_release'
+EXPERIMENT_NAME: 'images_inference'
 CUDNN:
   BENCHMARK: True
   DETERMINISTIC: False
@@ -14,22 +14,24 @@ PRINT_LOG: False
 
 DATASET:
   COLOR_RGB: True
-  TRAIN_DATASET: 'panoptic'
-  TEST_DATASET: 'panoptic'
+  TRAIN_DATASET: 'muco_synthetic'
+  TEST_DATASET: 'mupots'
   DATA_FORMAT: jpg
   DATA_AUGMENTATION: False
   HEATMAP:
-    SYNTHESIZE: True
+    SYNTHESIZE: False
     NOISE: True
     FIX_CAMERA: True
-  TRAIN_ROOT: 'data/panoptic-toolbox/data_hmor/' 
-  TEST_ROOT: 'data/panoptic-toolbox/data_hmor/'
+  TRAIN_ROOT: 'data/MuCo-3DHP/' 
+  TEST_ROOT: 'data/MuPoTS-3D/'
   TEST_SUBSET: 'validation'
   TRAIN_SUBSET: 'train'
   ROOTIDX: 2
+  GROUND_CENTER: True
+  RANDOM_PLACE: True
 NETWORK:
-  PRETRAINED:  '' 
-  PRETRAINED_BACKBONE:  '' 
+  PRETRAINED:  'output/muco_synthetic/multi_person_posenet_152/muco_synthesize_full_release/synthesize_full/model_last.pth.tar' 
+  PRETRAINED_BACKBONE:  'output/mix_coco_muco/multi_person_posenet_152/coco_backbone_res152_coco_muco/backbone_res152_mix_muco/model_last.pth.tar' 
   TARGET_TYPE: gaussian
   IMAGE_SIZE:
   - 960
@@ -37,22 +39,23 @@ NETWORK:
   HEATMAP_SIZE:
   - 240
   - 128
-  NUM_JOINTS: 15
-ROOT_ESTIMATION:
+  NUM_JOINTS: 17
+ROOT_ESTIMATION: 
   SPACE_SIZE:
     - 8000.0
     - 8000.0
     - 2400.0
   SPACE_CENTER:
     - 0.0 
-    - -500.0
-    - 800.0
+    - 0.0 
+    - 1100.0
   INITIAL_CUBE_SIZE:
     - 80
     - 80
     - 24
   MAX_PEOPLE_NUM: 10
   THRESHOLD: 0.3
+  MATCHED_THRESHOLD: 1000
 POSE_RESNET:
   INPUT_CHANNELS: 3
   FINAL_CONV_KERNEL: 1
@@ -85,15 +88,14 @@ TRAIN:
   BEGIN_EPOCH: 0
   END_EPOCH: 20
   SAVE_EPOCH: 1
-  MAX_SAMPLE: 12000
   RESUME: True
   OPTIMIZER: adam
   LR: 0.0001
-  SCHEME: ['REN', 'PEN']
+  SCHEME: ['backbone', 'REN']
 TEST:
   NEED: False
   MODEL_FILE: 'model_last.pth.tar'
-  BATCH_SIZE: 16
+  BATCH_SIZE: 8
 DEBUG:
   DEBUG: True
   SAVE_HEATMAPS_GT: True

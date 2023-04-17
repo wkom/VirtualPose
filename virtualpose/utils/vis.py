@@ -8,9 +8,9 @@ import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from utils.cameras import project_pose
-from utils.transforms import get_affine_transform as get_transform
-from utils.transforms import affine_transform_pts_cuda as do_transform
+from .cameras import project_pose
+from .transforms import get_affine_transform as get_transform
+from .transforms import affine_transform_pts_cuda as do_transform
 
 
 def save_batch_image_with_joints_multi(batch_image,

@@ -14,7 +14,7 @@ PRINT_LOG: False
 
 DATASET:
   COLOR_RGB: True
-  TRAIN_DATASET: 'panoptic_synthetic'
+  TRAIN_DATASET: 'panoptic'
   TEST_DATASET: 'panoptic'
   DATA_FORMAT: jpg
   DATA_AUGMENTATION: False
@@ -28,7 +28,7 @@ DATASET:
   TRAIN_SUBSET: 'train'
   ROOTIDX: 2
 NETWORK:
-  PRETRAINED:  'output/panoptic_synthetic/multi_person_posenet_152/voxelpose_hmor_synthesize_full_release/synthesize_full/model_last.pth.tar' 
+  PRETRAINED:  'output/panoptic/multi_person_posenet_152/voxelpose_hmor_synthesize_full_release/synthesize_full/model_last.pth.tar' 
   PRETRAINED_BACKBONE:  'output/mix_coco_panoptic/multi_person_posenet_152/coco_backbone_res152_coco_panoptic/backbone_res152_mix_panoptic/model_last.pth.tar' 
   TARGET_TYPE: gaussian
   IMAGE_SIZE:

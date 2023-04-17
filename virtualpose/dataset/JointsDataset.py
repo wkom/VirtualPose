@@ -8,9 +8,9 @@ from torch.utils.data import Dataset
 import os
 import time
 
-from utils.transforms import get_affine_transform
-from utils.transforms import affine_transform, get_scale
-from utils.cameras_cpu import project_pose, world_to_camera_frame, angles_to_camera
+from virtualpose.utils.transforms import get_affine_transform
+from virtualpose.utils.transforms import affine_transform, get_scale
+from virtualpose.utils.cameras_cpu import project_pose, world_to_camera_frame, angles_to_camera
 
 logger = logging.getLogger(__name__)
 
@@ -228,6 +228,7 @@ class JointsDataset(Dataset):
             'center': c,
             'scale': s,
             'rotation': r,
+            'trans': trans,
             'camera': db_rec['camera'],
             'depth': depth_camera,
             'depth_norm': depth_norm,

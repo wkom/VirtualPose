@@ -10,6 +10,7 @@ This is the official [Pytorch](https://pytorch.org/) implementation for:
 ## Installation
 ```
 pip install -r requirement.txt
+python setup.py develop
 ```
 
 ## Data preparation

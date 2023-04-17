@@ -13,10 +13,10 @@ import copy
 import cv2
 from pycocotools.coco import COCO
 
-from dataset.JointsDataset import JointsDataset
-from utils.transforms import projectPoints
-from utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
-from utils.pose_utils import process_bbox
+from .JointsDataset import JointsDataset
+from virtualpose.utils.transforms import projectPoints
+from virtualpose.utils.cameras_cpu import world_to_camera_frame, camera_to_world_frame, project_pose, project_pose_camera
+from virtualpose.utils.pose_utils import process_bbox
 
 logger = logging.getLogger(__name__)
 
