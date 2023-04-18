@@ -89,6 +89,8 @@ python run/train_3d.py --cfg configs/muco/synthesize_full.yaml --gpus 4
 ```
 
 ## Evaluation
+
+Our pre-trained models are available for download [here](https://pkueducn-my.sharepoint.com/:f:/g/personal/maxiaoxuan_pku_edu_cn/EkvCjguda3dNmlQjjumitWEB5OPj9fntf1Hyk1pNZrJHwg?e=ZG08CM).
 ### CMU Panoptic dataset
 
 Inference with 4 gpus:
@@ -104,6 +106,7 @@ python run/validate_3d.py --cfg configs/muco/synthesize_full_inference.yaml --gp
 ```
 
 The results are in `${ROOT}/mupots_results/$`, then use the evaluation code provided by MuPoTS-3D dataset to evaluate the results.
+
 
 ## Citing
 If our code helps your research, please consider citing the following paper:
