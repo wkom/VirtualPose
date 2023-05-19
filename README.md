@@ -90,7 +90,7 @@ python run/train_3d.py --cfg configs/muco/synthesize_full.yaml --gpus 4
 
 ## Evaluation
 
-Our pre-trained models are available for download [here](https://pkueducn-my.sharepoint.com/:f:/g/personal/maxiaoxuan_pku_edu_cn/EkvCjguda3dNmlQjjumitWEB5OPj9fntf1Hyk1pNZrJHwg?e=ZG08CM).
+Our pre-trained models are available for download from [Google drive](https://drive.google.com/drive/folders/1Y8unp_CQnXsWr1WljAgW0rYCMGkru6Ce?usp=share_link) or [Onedrive](https://chinapku-my.sharepoint.com/:f:/g/personal/2101111546_pku_edu_cn/ElPhUt3LaJpMgv7dH7YbJ2gBHPqS7E6fQg41tszqmHbzmg?e=wyZOKW).
 ### CMU Panoptic dataset
 
 Inference with 4 gpus:
